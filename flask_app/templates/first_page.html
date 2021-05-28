@@ -1,0 +1,95 @@
+{% extends "index.html" %}
+
+{% block firstpage %}
+ <div class="content">
+
+    <div class="quotes">
+        <h4 id="quote_title"> 오늘의 명언 </h4>
+        <h4> {{quote.quotes_text}} </h4>
+    </div>
+
+    <hr class="separator">
+
+    <!-- iframe -->
+    <iframe id="pageFrame" name="pageFrame" src="http://www.jobkorea.co.kr/Starter/calendar/sub/week"
+        frameborder="0" width="890px" height="1000px" scrolling="auto"></iframe>
+
+    <div class="main">
+        <h3>
+            <span style="font-size: 35px;">공고 조회</span><br /><br />조회하고 싶은 회사명을 입력하세요
+        </h3>
+        <div class="search-box">
+            <form action="" method="POST">
+                <input type="text" class="search" placeholder="회사 조회하기..." name="company_name">
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search" style="user-select: auto;"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class ="company_list">
+        <div class="company_table">
+            <h2>기업 리스트</h2>
+            <table class="small_fixed_header">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>기업명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key in distinct_keywords %}
+                    <tr>
+                        <th> {{loop.index}} </th>
+                        <th> {{key}} </th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% for key in distinct_keywords %}
+    <div class="big_table">
+        <h2>{{key}} 
+            <a class="fas fa-trash-alt", href='/delete/{{ key }}'>
+            </a>
+        </h2> 
+        <table class="fixed_header">
+            <thead>
+                <tr>
+                    <th>&ensp;&ensp;&ensp;&ensp;공고명</th>
+                    <th>&ensp;&ensp;&ensp;&ensp;기업명</th>
+                    <th>&ensp;&ensp;&ensp;학력</th>
+                    <th>경력</th>
+                    <th>연봉</th>
+                    <th>고용형태</th>
+                    <th>근무지역</th>
+                    <th>마감일</th>
+                    <th>산업/업종</th>
+                    <th>직업/직종</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for j in job_list %}
+                    {% if j.keyword==key %}
+                    <tr>
+                        <th><a href={{ j.links }}>{{ j.job_title }}</a></th>
+                        <th>{{ j.company_name }}</th>
+                        <th>{{ j.study_period }}</th>
+                        <th>{{ j.experience }}</th>
+                        <th>{{ j.money }}</th>
+                        <th>{{ j.job_app }}</th>
+                        <th>{{ j.area }}</th>
+                        <th>{{ j.job_end }}</th>
+                        <th>{{ j.field }}</th>
+                        <th>{{ j.spec_work }}</th>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

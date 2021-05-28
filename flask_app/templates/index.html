@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>ChuiBBo Dashboard</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    </head>
+
+    <body>
+
+        <input type="checkbox" id="check">
+
+        <!--header area start-->
+        <header>
+            <label for="check">
+                <i class="fas fa-bars" id="sidebar_btn"></i>
+            </label>
+            <div class="left_area">
+                <a href="">
+                    <h3>Lets Get It</h3>
+                </a>
+            </div>
+            <div class="right_area">
+                <a href="" class="logout_btn">Logout</a>
+            </div>
+        </header>
+        <!--header area end-->
+
+        <!--sidebar start-->
+        <div class="sidebar">
+            <center>
+                <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fch9vIL%2FbtqDrjVmCnZ%2FKUfNsCkQXK2Khz3h8w6ChK%2Fimg.jpg"
+                    class="profile_image" alt="">
+                <h4 lang="en"> Tae Yoon Noh</h4>
+            </center>
+            <a href="/"><i class="fas fa-desktop"> &nbsp;&nbsp; </i><span>Dashboard</span></a>
+            <a href="/news"><i class="far fa-newspaper"></i> &nbsp;&nbsp; <span>News</span></a>
+            <a href="/essay"><i class="fas fa-pencil-alt"></i> &nbsp;&nbsp; <span>Essay</span></a>
+            <a href="/keyword"><i class="fas fa-chart-line"></i> &nbsp;&nbsp; <span>Keyword</span></a>
+        </div>
+
+        {% block firstpage %}
+        {% endblock %}
+        {% block secondpage %}
+        {% endblock %}
+        {% block thirdpage %}
+        {% endblock %}
+        {% block forthpage %}
+        {% endblock %}
+
+    </body>
+
+</html>

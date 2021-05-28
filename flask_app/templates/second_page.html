@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+
+{% block secondpage %}
+<div class="content">
+    <iframe id="pageFrame" name="pageFrame" src="http://www.jobkorea.co.kr/Starter/calendar/sub/week"
+    frameborder="0" width="890px" height="1000px" scrolling="auto"></iframe>
+    <div class="main">
+        <h3>
+            <span style="font-size: 35px;">뉴스 조회</span><br/><br/>검색어를 입력하세요
+        </h3>
+        <div class="search-box">
+            <form action="" method="POST">
+                <input type="text" class="search" placeholder="뉴스 조회하기..." name="search_word">
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search" style="user-select: auto;" ></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <div class ="company_list">
+        <div class="company_table">
+            <h2>검색어 리스트</h2>
+            <table class="small_fixed_header">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>검색어</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key in distinct_keywords %}
+                    <tr>
+                        <th> {{ loop.index }} </th>
+                        <th> {{ key }} </th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    {% for key in distinct_keywords %}
+    <div class="big_table1">
+        <h2>{{key}} 
+            <a class="fas fa-trash-alt", href='/news/delete_news/{{ key }}'>
+            </a>
+        </h2> 
+        <table class="fixed_header">
+            <thead>
+                <tr>
+                    <th class="news_title">뉴스 제목</th>
+                    <th class="summary">요약</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for j in news %}
+                    {% if j.searched_keyword==key %}
+                    <tr>
+                        <th class="news_title1"><a href={{ j.url_link }}>{{ j.news_title }}</a></th>
+                        <th class="summary1">{{ j.news_summarized }}</th>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "index.html" %}
+
+{% block forthpage %}
+<div class="content">
+    <iframe id="pageFrame" name="pageFrame" src="http://www.jobkorea.co.kr/Starter/calendar/sub/week"
+    frameborder="0" width="890px" height="1000px" scrolling="auto"></iframe>
+    
+    <div class="main">
+        <h3>
+            <span style="font-size: 35px;">키워드 조회</span><br /><br />조회하고 싶은 회사명을 입력하세요
+        </h3>
+        <div class="search-box">
+            <form action="" method="POST">
+                <input type="text" class="search" placeholder="회사 조회하기..." name="keyword">
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search" style="user-select: auto;"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class ="company_list">
+        <div class="company_table">
+            <h2>키워드 리스트</h2>
+            <table class="small_fixed_header">
+                <thead>
+                    <tr>
+                        <th>회사명</th>
+                        <th>키워드</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key in distinct_keywords %}
+                    <tr>
+                        <th> {{ key }} </th>
+                        <th class="bodytable">
+                        {{ common_words[key] }}
+                        </th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    {% for key in distinct_keywords %}
+    <div class="big_table">
+        <h2>{{key}} 
+            <a class="fas fa-trash-alt", href='/keyword/delete_keyword/{{ key }}'>
+            </a>
+        </h2> 
+        <table class="fixed_header">
+            <thead>
+                <tr>
+                    <th class="news_title">자기소개서</th>
+                    <th class="summary">전문가 평점</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for j in essay %}
+                    {% if j.company_name==key %}
+                    <tr>
+                        <th class="news_title1"><a href={{ j.url_link }}>{{ key }} 합격자소서 {{ loop.index }} </a></th>
+                        <th class="summary1">{{ j.grade }}</th>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

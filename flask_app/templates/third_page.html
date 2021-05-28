@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+{% block thirdpage %}
+<div class="textbox">
+    <form action="" method='POST'>
+        <h1 class="essay_title"> 자기소개서 분석기 </h1>
+        <textarea cols="100", rows="20" name="essay_texts" style="border: 5px solid Black;"></textarea>
+        <input type="submit" class="essay_submit_btn" value = "Submit" style="border: solid Black; font-size:17px">  
+    </form>
+    <h2> My Grade : {{my_grade}}% </h1>
+</div>
+{% endblock %}
