@@ -107,3 +107,5 @@ Keyword 페이지에서는 회사명을 입력하면 해당 회사의 모든 합
 |유사 합격 자기소개서 찾기 기능 추가|-|-||
 |Multiclass Classifier 모델 구현|:heavy_check_mark:|-||
 |데이터 시각화 ReadMe 추가|:heavy_check_mark:|-||
+|Test Accuracy 70% 달성|-|:heavy_check_mark:|**2021-05-31**|
+|Test Accuracy 80% 달성|:heavy_check_mark:|-||
