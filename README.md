@@ -77,9 +77,10 @@ Keyword 페이지에서는 회사명을 입력하면 해당 회사의 모든 합
 |Model|Accuracy|Precision|Recall|F1-Score|Base-score|Model 적용 여부|비고|
 |--|:--:|:--:|:--:|:--:|:--:|:--:|--|
 |LGBM + CountVectorizer|0.67|0.60|0.60|0.60|0.205|||
-|LGBM + TfidfVectorizer|0.68|0.61|0.59|0.60|0.552|:heavy_check_mark:||
+|LGBM + TfidfVectorizer|0.68|0.61|0.59|0.60|0.552|||
 |Only Nouns + LGBM + CountVectorizer|0.67|0.60|0.61|0.60|0.385||명사 추출 후 토큰화 진행|
 |Only Nouns + LGBM + TfidfVectorizer|0.66|0.59|0.54|0.56|0.353||명사 추출 후 토큰화 진행|
+|Logistic Regression + TfidfVectorizer|0.73|0.71|0.50|0.58|0.475|:heavy_check_mark:||
 
 <br/>
 
