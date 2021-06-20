@@ -20,14 +20,14 @@
 * `pip install -r requirements.txt`
 
 **Development Mode (로컬에서 구동할 때 아래와 같이 입력)**
-* `export FLASK_APP=titanic_flask`
+* `export FLASK_APP=flask_app`
 * `export FLASK_ENV=development`
 * `flask run`
 
 <br/>
 
 **Production Mode (웹에서 구동할 때 아래와 같이 입력)**
-* `export FLASK_APP=titanic_flask`
+* `export FLASK_APP=flask_app`
 * `export FLASK_ENV=production`
 * `git add .`
 * `git commit -m "{commit message}"`
